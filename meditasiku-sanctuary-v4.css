@@ -1,0 +1,50 @@
+/* MeditasiKu Sanctuary V4: cinematic spatial hierarchy over the stable app. */
+body.mk-screen-home{background:#02070c!important}
+body.mk-screen-home .mk-sanctuary-home{position:relative;overflow:hidden;padding-bottom:calc(126px + env(safe-area-inset-bottom));background:linear-gradient(180deg,#07111b,#03080e 38%,#06111b)}
+body.mk-screen-home .mk-sanctuary-greeting{position:absolute!important;z-index:18;inset:0 0 auto;padding:max(20px,env(safe-area-inset-top)) 22px 18px!important;background:linear-gradient(180deg,rgba(1,5,9,.76),transparent);color:#fff;text-shadow:0 2px 18px #000}
+body.mk-screen-home .mk-sanctuary-greeting>div:first-child>div:first-child{font-size:10px!important;letter-spacing:.16em;text-transform:uppercase;color:#e9d594!important}
+body.mk-screen-home .mk-sanctuary-greeting>div:first-child>div:nth-child(2){font:23px/1.2 "Iowan Old Style",Georgia,serif!important}
+body.mk-screen-home .mk-sanctuary-greeting>div:last-child{width:42px!important;height:42px!important;background:rgba(4,13,21,.46)!important;border-color:rgba(235,207,132,.32)!important;backdrop-filter:blur(14px);cursor:pointer}
+body.mk-screen-home .mk-sanctuary-search{position:absolute!important;z-index:24;top:max(78px,calc(env(safe-area-inset-top) + 62px));left:0;right:0;margin:0!important;padding:0 22px!important;max-height:0;opacity:0;overflow:hidden;transform:translateY(-8px);transition:max-height .36s ease,opacity .25s ease,transform .36s ease;pointer-events:none}
+body.mk-screen-home.mk-search-open .mk-sanctuary-search{max-height:70px;opacity:1;transform:none;pointer-events:auto}
+body.mk-screen-home .mk-sanctuary-search>div{height:52px;border-radius:18px!important;background:rgba(4,14,23,.9)!important;border:1px solid rgba(235,207,132,.28)!important;box-shadow:0 18px 45px #0009;backdrop-filter:blur(18px)}
+body.mk-screen-home .mk-sanctuary-hero{margin:0!important;padding:0!important}
+body.mk-screen-home .mk-sanctuary-hero>div{height:min(69dvh,650px)!important;border-radius:0 0 52px 16px!important;border:0!important;box-shadow:0 36px 90px #000!important}
+body.mk-screen-home .mk-sanctuary-hero>div>img{filter:saturate(.78) contrast(1.08) brightness(.68)!important;animation:mkHeroDrift 18s ease-out both}
+body.mk-screen-home .mk-sanctuary-hero>div:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 70% 30%,rgba(243,210,132,.2),transparent 24%),linear-gradient(180deg,rgba(1,5,10,.18),transparent 34%,rgba(2,8,13,.96) 92%)}
+body.mk-screen-home .mk-sanctuary-hero>div>div:last-child{z-index:3!important;padding:0 24px 34px!important;align-items:end!important}
+body.mk-screen-home .mk-sanctuary-hero [class*="text-[12px]"]{letter-spacing:.12em;text-transform:uppercase;font-size:9px!important}
+body.mk-screen-home .mk-sanctuary-hero [class*="text-[15px]"]{font:30px/1.08 "Iowan Old Style",Georgia,serif!important;max-width:260px}
+body.mk-screen-home .mk-sanctuary-hero button{width:58px!important;height:58px!important;box-shadow:0 12px 40px rgba(226,189,99,.32)}
+@keyframes mkHeroDrift{from{transform:scale(1.11)}to{transform:scale(1.03)}}
+body.mk-screen-home .mk-ritual{margin:-1px 0 0!important;min-height:270px;border:0!important;border-radius:0!important;background:radial-gradient(circle at 82% 28%,rgba(235,207,132,.27),transparent 22%),linear-gradient(145deg,#1d383c,#0c1b2a 64%,#071019)!important;box-shadow:none!important}
+body.mk-screen-home .mk-ritual:before{inset:0;background:linear-gradient(90deg,rgba(3,9,14,.1),rgba(3,9,14,.54)),repeating-radial-gradient(ellipse at 80% 20%,rgba(255,255,255,.045) 0 2px,transparent 3px 18px);opacity:.72}
+body.mk-screen-home .mk-ritual-content{padding:52px 27px 44px!important;max-width:78%!important}
+body.mk-screen-home .mk-ritual h3{font-size:31px!important;letter-spacing:-.02em}
+body.mk-screen-home .mk-ritual p{font-size:13px;line-height:1.7}
+body.mk-screen-home .mk-ritual button{padding:12px 18px;background:transparent;color:#efd58c;border:1px solid rgba(239,213,140,.5);font-size:11px;box-shadow:none}
+body.mk-screen-home .mk-personal-sanctuary{margin:0!important;padding:48px 24px 50px!important;border:0!important;border-radius:0!important;background:linear-gradient(180deg,#06111b,#0b1d2a 50%,#061018)!important;box-shadow:none!important}
+body.mk-screen-home .mk-personal-head h3{font-size:30px!important}
+body.mk-screen-home .mk-personal-grid{grid-template-columns:repeat(3,78%);overflow-x:auto;scroll-snap-type:x mandatory;margin:22px -24px 0;padding:0 24px 9px;gap:14px;scrollbar-width:none}
+body.mk-screen-home .mk-personal-grid::-webkit-scrollbar{display:none}
+body.mk-screen-home .mk-personal-grid button{display:block;position:relative;min-height:260px;border:0!important;border-radius:28px 8px 28px 8px!important;scroll-snap-align:center;background:#091827!important;box-shadow:0 25px 55px #0008}
+body.mk-screen-home .mk-personal-grid img{width:100%;height:260px;filter:brightness(.72) saturate(.86)}
+body.mk-screen-home .mk-personal-grid button:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(2,7,12,.92))}
+body.mk-screen-home .mk-personal-grid span{position:absolute;z-index:2;left:18px;right:18px;bottom:18px;padding:0}
+body.mk-screen-home .mk-personal-grid strong{font:21px/1.2 Georgia,serif;white-space:normal}
+body.mk-screen-home .mk-personal-grid small{font-size:10px;color:#d2dce3}
+body.mk-screen-home .mk-sanctuary-heading{padding:46px 24px 12px!important;margin:0!important;background:#040b12}
+body.mk-screen-home .mk-sanctuary-heading h3{font:27px/1.2 Georgia,serif!important}
+body.mk-screen-home .mk-sanctuary-rail{margin:0!important;padding:8px 24px 34px!important;gap:14px!important;background:#040b12;scroll-snap-type:x mandatory}
+body.mk-screen-home .mk-sanctuary-rail>div{min-width:72%!important;scroll-snap-align:center;border-radius:28px 8px 28px 8px!important;box-shadow:0 22px 50px #0008}
+body.mk-screen-home .mk-sanctuary-chips{margin:0!important;padding:18px 24px 26px!important;background:linear-gradient(180deg,#040b12,#07131e);gap:9px!important}
+body.mk-screen-home .mk-sanctuary-chips button{background:transparent!important;border-color:rgba(228,198,116,.24)!important;padding:10px 16px!important}
+body.mk-screen-home .mk-sanctuary-portals{display:grid!important;grid-template-columns:1fr!important;margin:0!important;padding:18px 18px 54px!important;gap:13px!important;background:#07131e}
+body.mk-screen-home .mk-sanctuary-portals>button{height:190px!important;border:0!important;border-radius:8px 32px 8px 32px!important;box-shadow:0 20px 45px #0007}
+body.mk-screen-home .mk-sanctuary-portals>button:nth-child(even){border-radius:32px 8px 32px 8px!important}
+body.mk-screen-home .mk-sanctuary-portals>button img{opacity:.5!important;filter:saturate(.78) brightness(.7)}
+body:not(.mk-screen-splash):not(.mk-screen-onboarding) #root div.fixed.bottom-0{bottom:max(10px,env(safe-area-inset-bottom))!important;left:50%!important;width:calc(100% - 24px)!important;max-width:406px!important;border:1px solid rgba(236,209,139,.16)!important;border-radius:26px!important;padding:8px 8px 7px!important;background:rgba(3,11,18,.78)!important;backdrop-filter:blur(24px) saturate(1.2)!important;box-shadow:0 18px 55px #000c!important}
+body:not(.mk-screen-splash):not(.mk-screen-onboarding) #root div.fixed.bottom-0 button{min-width:54px}
+body:not(.mk-screen-splash):not(.mk-screen-onboarding) #root div.fixed.bottom-0 button>div.rounded-full{width:44px!important;height:44px!important;margin-top:-18px!important;border:5px solid #06111b;box-shadow:0 9px 28px rgba(226,189,99,.25)!important}
+@media(max-width:380px){body.mk-screen-home .mk-sanctuary-hero>div{height:64dvh!important}body.mk-screen-home .mk-sanctuary-hero [class*="text-[15px]"]{font-size:26px!important}body.mk-screen-home .mk-personal-grid{grid-template-columns:repeat(3,84%)}body.mk-screen-home .mk-sanctuary-rail>div{min-width:80%!important}}
+@media(prefers-reduced-motion:reduce){body.mk-screen-home .mk-sanctuary-hero>div>img{animation:none!important}}

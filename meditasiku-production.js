@@ -49,20 +49,15 @@ function inject(){
  $$('button').forEach((b,i)=>{if(!b.getAttribute('aria-label')&&!b.textContent.trim())b.setAttribute('aria-label',accessibleName(b,i));if(!b.hasAttribute('type'))b.type='button';if(b.disabled&&!b.title)b.title='Fitur belum tersedia'});
  $$('[role="button"]').forEach(el=>{if(!el.hasAttribute('tabindex'))el.tabIndex=0;if(el.dataset.mkKeyboard)return;el.dataset.mkKeyboard='1';el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click()}})});
  normalizeDuration();
- const text=document.body.innerText;
- if(/Explore/i.test(text)&&!$('[data-mk-v5-search]')){const b=document.createElement('button');b.dataset.mkV5Search='1';b.className='mk-v5-float';b.textContent='⌕ Filter';b.onclick=searchStudio;document.body.append(b)}else if(!$$('h1,h2').some(x=>x.textContent.trim()==='Explore'))$('[data-mk-v5-search]')?.remove();
- const add=(marker,label,fn,match)=>{if($(marker)||!match)return;const b=document.createElement('button');b.className='mk-v5-inline';b.setAttribute(marker.slice(1,-1),'1');b.textContent=label;b.onclick=fn;const nav=$('div.fixed.bottom-0');(nav?.parentElement||$('#root')).append(b)};
- add('[data-mk-v5-detail]','Detail Lengkap',()=>detail(),/Tips Penggunaan|Fungsi Utama|Putar Sekarang/i.test(text));
- add('[data-mk-v5-player]','Player Studio',playerTools,/Timer[\s\S]*Download[\s\S]*Favorit/i.test(text));
- add('[data-mk-v5-library]','Kelola Library',libraryStudio,/Library[\s\S]*(Favorit|Download|Playlist|Riwayat)/i.test(text));
- add('[data-mk-v5-create]','Buka Create Studio',createStudio,/(Dose Generator|Binaural|Buat Dose Saya)/i.test(text));
- add('[data-mk-v5-status]','Status Sistem',systemStatus,/Profil[\s\S]*(Pencapaian|Sesi Selesai)/i.test(text));
+ $$('.mk-v5-float,.mk-v5-inline').forEach(x=>x.remove());
 }
 addEventListener('error',e=>{track('error',{message:e.message,source:e.filename,line:e.lineno});announce('Terjadi kendala tampilan. Data lokal tetap aman.')});
 addEventListener('unhandledrejection',e=>{track('error',{message:String(e.reason)});announce('Proses belum berhasil. Silakan coba kembali.')});
 addEventListener('online',()=>announce('Koneksi kembali tersedia'));addEventListener('offline',()=>announce('Mode offline aktif • Dose tersimpan tetap tersedia'));
 document.addEventListener('click',e=>{const t=e.target.closest('button');if(t)track('ui_click',{label:(t.textContent||t.getAttribute('aria-label')||'action').trim().slice(0,80)})},false);
-new MutationObserver(()=>requestAnimationFrame(inject)).observe(document.documentElement,{subtree:true,childList:true});
+let injectFrame=0,injectTimer=0,lastSignature='';
+function scheduleInject(){clearTimeout(injectTimer);injectTimer=setTimeout(()=>{if(injectFrame)return;injectFrame=requestAnimationFrame(()=>{injectFrame=0;const signature=`${document.body.dataset.mkScreen||''}|${document.querySelectorAll('button').length}|${document.querySelectorAll('img').length}|${document.querySelector('.mk-v5-host')?'modal':'page'}`;if(signature===lastSignature)return;lastSignature=signature;inject()})},48)}
+new MutationObserver(scheduleInject).observe(document.getElementById('root')||document.body,{subtree:true,childList:true});
 db().then(()=>{track('app_open',{offline:!navigator.onLine});inject()});
-window.MeditasiKu=Object.freeze({version:'5.0',catalog,search:searchStudio,detail,player:playerTools,library:libraryStudio,create:createStudio,status:systemStatus,smokeTest,storage:{all,put,remove},audio:{play:playDSP,stop:fadeOut}});
+window.MeditasiKu=Object.freeze({version:'5.1',catalog,search:searchStudio,detail,player:playerTools,library:libraryStudio,create:createStudio,status:systemStatus,smokeTest,offline:()=>saveOffline(currentDose()),favorite:()=>toggleFavorite(currentDose()),storage:{all,put,remove},audio:{play:playDSP,stop:fadeOut}});
 })();
