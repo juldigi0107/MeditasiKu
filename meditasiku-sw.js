@@ -1,4 +1,4 @@
-const CACHE='meditasiku-release-v9-adaptive-themes-complete-categories';
+const CACHE='meditasiku-release-v9-1-home-20-categories';
 const SHELL=['./','./index.html','./meditasiku-dose-data.js','./meditasiku-dose.css','./meditasiku-production.js','./meditasiku-production.css','./meditasiku-sanctuary.js','./meditasiku-sanctuary.css','./meditasiku-sanctuary-v4.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png','./assets/app/sanctuary-gateway.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
