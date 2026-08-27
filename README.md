@@ -1,15 +1,27 @@
-# MeditasiKu — GitHub Pages V9 (Adaptive Themes + Complete Categories)
+# MeditasiKu — GitHub Pages V14 (50 Categories + 500 Dose)
 
-Build transisi untuk pengujian personal melalui GitHub Pages/PWA.
+Build transisi untuk pengujian personal melalui GitHub Pages/PWA dengan 50 kategori dan 500 Dose.
 
-- Katalog tetap berisi 200 Dose dan 20 kategori.
+- Katalog tetap berisi 500 Dose dan 50 kategori.
 - 60 Dose pertama memakai artwork WebP premium individual 768×960.
-- 140 Dose berikutnya masih memakai placeholder SVG individual dari V6.
+- 140 Dose lama masih memakai placeholder SVG individual dari V6.
+- 300 Dose baru memakai fallback gerbang Sanctuary sampai artwork individual tersedia.
 - Data memakai adapter field kanonis Master Prompt V3.
 - Status publikasi diturunkan menjadi `DRAFT` karena reviewed audio master belum tersedia.
 - Realtime Web Audio DSP tetap dapat diuji, tetapi bukan audio master produksi.
 
-Build ini adalah checkpoint pengujian personal sampai 200 artwork raster dan audio master selesai direview.
+Build ini adalah checkpoint pengujian personal sampai 500 artwork raster dan audio master selesai direview.
+
+## Integrasi grafis V14
+
+- `meditasiku-graphics.js` mencoba artwork Dose premium, cover dan simbol
+  kategori, serta background halaman berdasarkan manifest grafis V14.
+- Bila file grafis baru belum tersedia atau gagal dimuat, aplikasi otomatis
+  kembali ke artwork/background lama. Navigasi, player, katalog, dan offline
+  recipe tidak dihentikan oleh kegagalan aset visual.
+- Unggah hasil generate dengan path dan nama file persis dari master prompt V14.
+- Aset yang berhasil dimuat aktif otomatis tanpa perlu mengedit HTML kembali.
+- Cache shell memakai `meditasiku-release-v14-progressive-graphics`.
 
 ## Perubahan V8
 
@@ -21,8 +33,17 @@ Build ini adalah checkpoint pengujian personal sampai 200 artwork raster dan aud
 - Review audio master tidak dipalsukan: seluruh Dose berstatus `NOT_REVIEWABLE_NO_MASTER` sampai file WAV/FLAC/AAC tersedia.
 - Lihat `RECIPE_RESEARCH_AUDIT.md` untuk hasil audit dan sumber.
 - Player memiliki Theme Mixer adaptif: hujan, angin, pantai, api unggun, hutan, aliran air, malam, dan kafe tenang hanya ditampilkan bila sesuai dengan Dose.
-- Explore menampilkan seluruh 20 kategori dan 200 Dose.
+- Explore menampilkan seluruh 50 kategori dan 500 Dose.
 - Detail utama memakai bahasa sederhana; recipe, DSP, evidence, dan status audio master berada di tombol **Buka Technical Details**.
+
+## Perubahan V13
+
+- Tepat 50 kategori dan 500 Dose; setiap kategori berisi 10 Dose.
+- 30 kategori tambahan tersimpan di `meditasiku-extra-300.js` dan dimuat sebelum database utama.
+- Kategori dibagi menjadi Core Sanctuary, Functional Journeys, Soundscape Worlds, dan Emotional & Perceptual Journeys.
+- Pemilihan kategori menampilkan resume fungsi, karakter suara, target pengguna, perhatian keselamatan, lalu 10 Dose dengan ringkasan individual.
+- Seluruh recipe memiliki design signature unik dan menjalankan jalur adapter/validator yang sama.
+- Auditory Illusion Lab tidak memuat voice, perintah tersembunyi, infrasonik, atau ultrasonik.
 
 Paket ini memakai path relatif sehingga dapat dipasang pada repository GitHub Pages dengan nama apa pun.
 
@@ -32,7 +53,7 @@ Paket ini memakai path relatif sehingga dapat dipasang pada repository GitHub Pa
 2. Pilih **Public**, lalu tekan **Create repository**.
 3. Pilih **Add file → Upload files**.
 4. Ekstrak ZIP ini, lalu unggah **semua isi foldernya**. `index.html` wajib berada di root repository, bukan dalam folder tambahan.
-   Pastikan folder `assets/app` dan `assets/doses` ikut terunggah; folder Dose berisi tepat 200 artwork individual.
+   Pastikan folder `assets/app`, `assets/doses`, dan `assets/doses-raster` ikut terunggah.
 5. Isi commit message `Upload MeditasiKu PWA`, lalu tekan **Commit changes**.
 6. Buka **Settings → Pages**.
 7. Pada **Build and deployment**, pilih **Deploy from a branch**.
@@ -58,15 +79,15 @@ Refresh URL di Safari. Jika masih lama, hapus ikon PWA, buka **Settings iPhone �
 
 ## Isi build ini
 
-- `meditasiku-dose-data.js`: database lokal 200 Dose / 20 kategori, metadata editorial, recipe DSP, evidence, safety, setup, lima tips kontekstual, dan pemetaan artwork.
-- `assets/doses/`: 200 SVG premium individual. Nama file dipetakan satu-ke-satu oleh database dan telah diperiksa tanpa path hilang.
+- `meditasiku-dose-data.js`: database lokal 500 Dose / 50 kategori, metadata editorial, recipe DSP, evidence, safety, setup, lima tips kontekstual, dan pemetaan artwork.
+- `assets/doses/`: 200 SVG legacy; 60 Dose pertama menggunakan raster WebP, sedangkan 300 Dose tambahan menggunakan fallback gerbang sampai artwork final tersedia.
 - `assets/app/sanctuary-gateway.webp`: environment utama Sanctuary untuk splash dan atmosfer global.
 - `meditasiku-production.js`: detail Dose Sanctuary tunggal untuk Home, Explore/kategori, Search, dan Library; player DSP; timer 1–480 menit; favorite; history; playlist; download offline; settings.
 - `meditasiku-sw.js`: cache shell PWA dan cache artwork ketika Dose disimpan offline.
 
 ## Setelah memperbarui repository
 
-GitHub Pages dapat memerlukan 1–5 menit untuk menerbitkan commit. Service Worker build ini memakai cache `meditasiku-release-v6-dose-artwork-player`, sehingga cache versi lama akan dibuang setelah Service Worker baru aktif. Jika Safari masih menampilkan versi lama, tutup PWA dari app switcher, buka URL GitHub Pages sekali di Safari, lalu jalankan kembali PWA.
+GitHub Pages dapat memerlukan 1–5 menit untuk menerbitkan commit. Service Worker build ini memakai cache `meditasiku-release-v13-50-categories-500-dose`, sehingga cache versi lama akan dibuang setelah Service Worker baru aktif. Jika Safari masih menampilkan versi lama, tutup PWA dari app switcher, buka URL GitHub Pages sekali di Safari, lalu jalankan kembali PWA.
 
 ## Batas paket statis
 
