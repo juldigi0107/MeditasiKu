@@ -1,4 +1,4 @@
-# MeditasiKu — GitHub Pages V8 (Title-Driven Recipes + Research Audit)
+# MeditasiKu — GitHub Pages V9 (Adaptive Themes + Complete Categories)
 
 Build transisi untuk pengujian personal melalui GitHub Pages/PWA.
 
@@ -20,6 +20,9 @@ Build ini adalah checkpoint pengujian personal sampai 200 artwork raster dan aud
 - Klaim binaural, colored noise, sleep, focus, dan natural sound dibuat konservatif.
 - Review audio master tidak dipalsukan: seluruh Dose berstatus `NOT_REVIEWABLE_NO_MASTER` sampai file WAV/FLAC/AAC tersedia.
 - Lihat `RECIPE_RESEARCH_AUDIT.md` untuk hasil audit dan sumber.
+- Player memiliki Theme Mixer adaptif: hujan, angin, pantai, api unggun, hutan, aliran air, malam, dan kafe tenang hanya ditampilkan bila sesuai dengan Dose.
+- Explore menampilkan seluruh 20 kategori dan 200 Dose.
+- Detail utama memakai bahasa sederhana; recipe, DSP, evidence, dan status audio master berada di tombol **Buka Technical Details**.
 
 Paket ini memakai path relatif sehingga dapat dipasang pada repository GitHub Pages dengan nama apa pun.
 
