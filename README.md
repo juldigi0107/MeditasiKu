@@ -1,4 +1,14 @@
-# MeditasiKu — GitHub Pages V16 (Canonical UI/UX)
+# MeditasiKu — GitHub Pages V16.1 (Layout Recovery)
+
+## Perbaikan pemulihan V16.1
+
+- Memperbaiki overlay onboarding yang menutupi teks dan tombol.
+- Artwork onboarding digunakan sebagai background penuh; frame ilustrasi lama tidak lagi memotong gambar baru.
+- Menghentikan popup personalisasi tujuh langkah agar tidak terbuka otomatis setelah onboarding utama.
+- Memastikan atribut `hidden` mengalahkan aturan `display: flex/grid !important` dari CSS legacy.
+- Mendeteksi judul halaman `Jelajahi` sebagai Explore sehingga renderer card Dose baru aktif.
+- Membersihkan renderer V16 lama saat pindah Library, Profil, Explore, atau kembali ke Home.
+- Cache PWA dinaikkan menjadi `meditasiku-release-v16-1-layout-recovery`.
 
 ## Perbaikan V16
 
