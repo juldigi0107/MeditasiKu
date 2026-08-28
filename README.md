@@ -1,4 +1,4 @@
-# MeditasiKu — GitHub Pages V14 (50 Categories + 500 Dose)
+# MeditasiKu — GitHub Pages V15 (Premium App Graphics Checkpoint)
 
 Build transisi untuk pengujian personal melalui GitHub Pages/PWA dengan 50 kategori dan 500 Dose.
 
@@ -21,7 +21,20 @@ Build ini adalah checkpoint pengujian personal sampai 500 artwork raster dan aud
   recipe tidak dihentikan oleh kegagalan aset visual.
 - Unggah hasil generate dengan path dan nama file persis dari master prompt V14.
 - Aset yang berhasil dimuat aktif otomatis tanpa perlu mengedit HTML kembali.
-- Cache shell memakai `meditasiku-release-v14-progressive-graphics`.
+
+## Grafis aplikasi V15
+
+- 24 background aplikasi termasuk splash, Gate, tujuh tahap onboarding, Home,
+  Explore, Detail, Player, Create, Library, Profile, Settings, Search, Offline,
+  Premium, Technical Details, dan Blackout.
+- Logo mark, wordmark, tiga ikon instalasi PWA, tiga tekstur tombol, tiga overlay,
+  player orb, waveform, dan 33 ikon UI raster transparan.
+- Onboarding memilih background berdasarkan langkah yang sedang tampil.
+- Tombol memakai ikon premium hanya jika file terkait tersedia; fallback teks dan
+  fungsi lama tetap dipertahankan.
+- Cache shell memakai `meditasiku-release-v15-premium-app-graphics`.
+- 19 ikon UI dan 50 simbol kategori masih menunggu reset kuota generator; aplikasi
+  tetap menggunakan fallback lama untuk file yang belum ada.
 
 ## Perubahan V8
 
