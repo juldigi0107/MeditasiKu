@@ -1,4 +1,15 @@
-# MeditasiKu — GitHub Pages V15 (Premium App Graphics Checkpoint)
+# MeditasiKu — GitHub Pages V16 (Canonical UI/UX)
+
+## Perbaikan V16
+
+- Visual tujuh langkah Selamat Datang memakai aset onboarding baru sesuai langkah aktif.
+- Home hanya mempertahankan hero, ritual, dan Sanctuary Personal; card rekomendasi, chip, dan kategori legacy di bagian bawah disembunyikan.
+- Ikon aset menggantikan ikon hardcode dan SVG bawaan pada kontrol yang sama sehingga tidak tampil ganda.
+- Popup kategori terpilih hanya menampilkan resume kategori tersebut dan 10 Dose di dalamnya.
+- Profile dan Library membaca statistik serta koleksi aktual dari localStorage/IndexedDB, tanpa angka contoh prototipe.
+- Explore memakai card Dose kanonis baru dengan pencarian dan filter.
+- Katalog, 500 resep audio, player, persistence, dan navigasi lama tidak diubah.
+- Cache PWA: `meditasiku-release-v16-uiux-canonical`.
 
 Build transisi untuk pengujian personal melalui GitHub Pages/PWA dengan 50 kategori dan 500 Dose.
 
