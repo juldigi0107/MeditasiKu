@@ -1,35 +1,21 @@
-# MeditasiKu V17 — Clean Modular Rebuild
+# MeditasiKu V24 — GitHub Frontend + Cloudflare Workers/D1
 
-Build ini mengganti shell lama yang memuat React inline dan gambar Base64. UI utama sekarang tersusun dari file HTML, CSS, JavaScript, dan aset eksternal yang terpisah.
+Deployment source untuk MeditasiKu V24.
 
-## Upload ke GitHub Pages
+- Frontend shell dipublikasikan melalui GitHub Pages.
+- Authentication, membership, payment, recipe, entitlement, dan artwork protected dilayani Cloudflare Worker + D1.
+- Repository ini sengaja **tidak** menyimpan 500 recipe canonical, 500 full artwork, atau category artwork protected.
+- Private D1 seed diimpor terpisah melalui Admin → Konten D1 setelah backend live.
 
-1. Ekstrak ZIP.
-2. Upload **seluruh isi** folder ke root repository `MeditasiKu`.
-3. Pastikan `index.html`, semua file `.js`/`.css`, `manifest.webmanifest`, `meditasiku-sw.js`, dan folder `assets` berada di root yang sama.
-4. Commit perubahan dan tunggu proses Pages selesai.
-5. Buka `https://juldigi0107.github.io/MeditasiKu/?v=17`.
+Akses default:
+- Admin awal: `superadmin`
+- Password awal: `superadmin123`
+- Wajib diganti segera pada login pertama.
 
-Untuk memastikan versi lama tidak tertahan di iPhone, hapus PWA lama dan data situs `juldigi0107.github.io` dari **Settings → Safari → Advanced → Website Data**, lalu buka ulang URL V17.
+Plan:
+- Free: 1 Dose per kategori dapat dibuka, semua Dose tetap terlihat dengan lock.
+- Pro: 5 Dose per kategori dapat dibuka.
+- Premium: seluruh Dose.
+- Admin: seluruh Dose + Admin Settings.
 
-## File aktif
-
-- `index.html` — shell kecil tanpa bundle UI tertanam.
-- `meditasiku-app.css` — seluruh sistem visual utama.
-- `meditasiku-app.js` — navigasi dan renderer layar utama.
-- `meditasiku-production.css` / `meditasiku-production.js` — detail Dose, kategori, player, Create Studio, dan penyimpanan lokal.
-- `meditasiku-dose-data.js` / `meditasiku-extra-300.js` — katalog kanonis 500 Dose dalam 50 kategori.
-- `assets/` — artwork dan ikon eksternal.
-- `meditasiku-sw.js` — cache PWA V17.
-
-File legacy seperti `meditasiku-sanctuary*.css/js`, `meditasiku-graphics.*`, `meditasiku-dose.css`, dan `meditasiku-uiux-v16.*` tidak lagi dipanggil. Jika masih ada di repository lama, file tersebut boleh dihapus setelah V17 berhasil berjalan.
-
-## Perilaku yang dipertahankan
-
-- 500 Dose / 50 kategori.
-- Detail Dose dan technical details.
-- Player DSP, timer, kontrol transport, ambience tematik, volume, intensitas, repeat, shuffle, favorite, dan offline recipe.
-- Create Studio.
-- Library/Profile berbasis data lokal.
-- Splash, onboarding, Home, Explore, kategori, dan dock yang responsif.
-
+Release: V24 D1 protected content.

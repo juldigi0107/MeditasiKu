@@ -1,0 +1,57 @@
+name: Deploy MeditasiKu Frontend to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare V24 protected frontend
+        env:
+          API_BASE_URL: ${{ vars.MEDITASIKU_API_BASE_URL || 'https://meditasiku-api.tvvvnp4rtn.workers.dev' }}
+        run: |
+          set -euo pipefail
+          mkdir -p .v24
+          tar -xJf _v24_source.tar.xz -C .v24
+          rm -rf _site
+          cp -R .v24/frontend _site
+          cp -R assets _site/assets
+          cp apple-touch-icon.png icon-192.png icon-512.png _site/
+          touch _site/.nojekyll
+          API_BASE_URL="$API_BASE_URL" python - <<'PY'
+          import os, pathlib, re
+          p=pathlib.Path('_site/meditasiku-config.js')
+          s=p.read_text(encoding='utf-8')
+          api=os.environ['API_BASE_URL'].strip().rstrip('/').replace("'",'')
+          s,n=re.subn(r"API_BASE_URL:'[^']*'", "API_BASE_URL:'"+api+"'", s)
+          if n != 1: raise SystemExit('Could not inject API_BASE_URL exactly once')
+          p.write_text(s,encoding='utf-8')
+          PY
+          test ! -e _site/meditasiku-dose-data.js
+          test ! -e _site/meditasiku-extra-300.js
+          test ! -d _site/assets/doses-raster
+          test ! -d _site/assets/categories-raster
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
