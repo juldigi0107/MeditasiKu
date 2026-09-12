@@ -22,13 +22,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Prepare V24 protected frontend
+      - name: Rebuild V24 source
+        run: |
+          set -euo pipefail
+          cat _v24_source_parts/*.b64 | base64 -d > /tmp/v24-source.tar.xz
+          xz -t /tmp/v24-source.tar.xz
+          mkdir -p .v24
+          tar -xJf /tmp/v24-source.tar.xz -C .v24
+      - name: Prepare protected frontend
         env:
           API_BASE_URL: ${{ vars.MEDITASIKU_API_BASE_URL || 'https://meditasiku-api.tvvvnp4rtn.workers.dev' }}
         run: |
           set -euo pipefail
-          mkdir -p .v24
-          tar -xJf _v24_source.tar.xz -C .v24
           rm -rf _site
           cp -R .v24/frontend _site
           cp -R assets _site/assets
