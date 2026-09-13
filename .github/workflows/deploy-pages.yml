@@ -31,7 +31,7 @@ jobs:
           tar -xJf /tmp/v24-source.tar.xz -C .v24
       - name: Prepare protected frontend
         env:
-          API_BASE_URL: ${{ vars.MEDITASIKU_API_BASE_URL || 'https://meditasiku-api.tvvvnp4rtn.workers.dev' }}
+          API_BASE_URL: https://meditasiku-api.juldigi.workers.dev
         run: |
           set -euo pipefail
           rm -rf _site
