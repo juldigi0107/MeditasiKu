@@ -20,6 +20,23 @@ jobs:
           xz -t /tmp/v24-source.tar.xz
           mkdir -p .v24
           tar -xJf /tmp/v24-source.tar.xz -C .v24
+      - name: Patch Cloudflare PBKDF2 runtime limit
+        working-directory: .v24/cloudflare-worker
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('src/index.js')
+          s=p.read_text(encoding='utf-8')
+          old='PBKDF2_ITERATIONS=600000'
+          new='PBKDF2_ITERATIONS=100000'
+          if old in s:
+              s=s.replace(old,new)
+          if new not in s:
+              raise SystemExit('PBKDF2 runtime patch not applied')
+          p.write_text(s,encoding='utf-8')
+          PY
+          grep -q 'PBKDF2_ITERATIONS=100000' src/index.js
       - name: Install Worker dependencies
         working-directory: .v24/cloudflare-worker
         run: npm install
